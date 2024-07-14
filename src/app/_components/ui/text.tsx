@@ -1,7 +1,6 @@
 import { useColorScheme } from '@hooks/use-color-scheme';
 import { cn } from '@shared/cn';
 import { Text as RNText } from 'react-native';
-import { Props } from '~/types';
 
 type TextProps = Props & {
   text?: string;
