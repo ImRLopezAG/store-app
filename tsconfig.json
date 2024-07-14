@@ -22,12 +22,16 @@
       "@shared/*": [
         "src/shared/*"
       ],
+      "@ui/*": [
+        "src/app/_components/ui/*"
+      ],
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "global.d.ts"
   ]
 }
