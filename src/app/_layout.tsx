@@ -1,4 +1,4 @@
-import { NAV_THEME } from '@app/theme';
+import { NAV_THEME } from '@shared/theme';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import {
