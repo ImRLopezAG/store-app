@@ -25,6 +25,12 @@
       "@ui/*": [
         "src/app/_components/ui/*"
       ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@stores/*": [
+        "src/app/_stores/*"
+      ],
     }
   },
   "include": [

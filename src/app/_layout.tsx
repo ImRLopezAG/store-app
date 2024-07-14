@@ -1,21 +1,15 @@
-import { NAV_THEME } from '@shared/theme';
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { Providers } from '@app/providers';
 import {
   useColorScheme,
   useInitialAndroidBarSync,
 } from '@hooks/use-color-scheme';
-import { ThemeProvider as NavThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
 import './global.css';
 
 export default function Layout() {
   useInitialAndroidBarSync();
-  const { colorScheme, isDarkColorScheme } = useColorScheme();
+  const { isDarkColorScheme } = useColorScheme();
   return (
     <>
       <StatusBar
@@ -24,28 +18,20 @@ export default function Layout() {
       />
       {/* WRAP YOUR APP WITH ANY ADDITIONAL PROVIDERS HERE */}
 
-      <SafeAreaProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <BottomSheetModalProvider>
-            <ActionSheetProvider>
-              <NavThemeProvider value={NAV_THEME[colorScheme]}>
-                <Stack
-                  screenOptions={{
-                    animation: 'ios',
-                  }}
-                >
-                  <Stack.Screen
-                    name='(tabs)'
-                    options={{
-                      headerShown: false,
-                    }}
-                  />
-                </Stack>
-              </NavThemeProvider>
-            </ActionSheetProvider>
-          </BottomSheetModalProvider>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
+      <Providers>
+        <Stack
+          screenOptions={{
+            animation: 'ios',
+          }}
+        >
+          <Stack.Screen
+            name='(tabs)'
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack>
+      </Providers>
     </>
   );
 }
