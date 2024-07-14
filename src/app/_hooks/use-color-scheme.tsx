@@ -1,11 +1,12 @@
-import { COLORS } from '@app/theme/colors';
+import { COLORS } from '@shared/theme/colors';
 import * as NavigationBar from 'expo-navigation-bar';
 import { useColorScheme as useNativewindColorScheme } from 'nativewind';
 import * as React from 'react';
 import { Platform } from 'react-native';
 
 function useColorScheme() {
-  const { colorScheme, setColorScheme: setNativeWindColorScheme } = useNativewindColorScheme();
+  const { colorScheme, setColorScheme: setNativeWindColorScheme } =
+    useNativewindColorScheme();
 
   async function setColorScheme(colorScheme: 'light' | 'dark') {
     setNativeWindColorScheme(colorScheme);
@@ -47,8 +48,12 @@ export { useColorScheme, useInitialAndroidBarSync };
 
 function setNavigationBar(colorScheme: 'light' | 'dark') {
   return Promise.all([
-    NavigationBar.setButtonStyleAsync(colorScheme === 'dark' ? 'light' : 'dark'),
+    NavigationBar.setButtonStyleAsync(
+      colorScheme === 'dark' ? 'light' : 'dark'
+    ),
     NavigationBar.setPositionAsync('absolute'),
-    NavigationBar.setBackgroundColorAsync(colorScheme === 'dark' ? '#00000030' : '#ffffff80'),
+    NavigationBar.setBackgroundColorAsync(
+      colorScheme === 'dark' ? '#00000030' : '#ffffff80'
+    ),
   ]);
 }
