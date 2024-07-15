@@ -1,10 +1,10 @@
-import { Providers } from '@app/providers';
 import {
   useColorScheme,
   useInitialAndroidBarSync,
 } from '@hooks/use-color-scheme';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { Providers } from '@app/_providers';
 import './global.css';
 
 export default function Layout() {

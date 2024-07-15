@@ -1,12 +1,5 @@
-import { Text } from '@ui/text';
-import { Wrapper } from '@ui/wrapper';
-import { useCart } from '@hooks/use-cart'
+import { ProductList } from '@components/products';
 
 export default function Home() {
-  const { cart } = useCart()
-  return (
-    <Wrapper title='Home'>
-      <Text text={`Cart: ${cart?.id}`} />
-    </Wrapper>
-  );
+  return <ProductList product='NEW_RELEASES' title='New Releases' />;
 }
