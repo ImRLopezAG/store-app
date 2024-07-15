@@ -11,11 +11,15 @@ interface Props {
 }
 
 export const ProductList: React.FC<Props> = ({ product, title }) => {
-  const { handleCurrPage, endpoints } = usePage();
+  const { handleCurrPage, endpoints, nextPage } = usePage();
   useEffect(() => {
     handleCurrPage(endpoints[product]);
   }, [endpoints, product, handleCurrPage]);
-  const { products, isLoading, error } = useProduct();
+  const { products, isLoading } = useProduct();
+  const handleRefresh = () => {
+    handleCurrPage(endpoints[product]);
+  }
+
   return (
     <Wrapper
       title={title}
@@ -24,9 +28,13 @@ export const ProductList: React.FC<Props> = ({ product, title }) => {
       <FlatList
         className='flex flex-1'
         data={products}
-        keyExtractor={(item) => item.id}
         numColumns={2}
+        keyExtractor={(item) => item.id }
         renderItem={({ item }) => <ProductCard product={item} />}
+        refreshing={isLoading}
+        onRefresh={handleRefresh}
+        onEndReached={() => handleCurrPage(nextPage)}
+        onEndReachedThreshold={0.4}
       />
     </Wrapper>
   );

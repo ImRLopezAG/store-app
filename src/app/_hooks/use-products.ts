@@ -1,6 +1,6 @@
 import { getProducts } from '@services/api';
 import { usePage } from '@hooks/use-pagination';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
 export function useProduct() {
@@ -17,8 +17,7 @@ export function useProduct() {
   }>(currPage, getProducts, {
     refreshInterval: 1000,
   });
-
-  const products = data?.products ?? [];
+  const [products, setProducts] = useState<Product[]>([]);
   const pages = data?.pages;
   useEffect(() => {
     if (pages) {
@@ -27,6 +26,9 @@ export function useProduct() {
       handleNextPage(pages.next ?? '');
       handlePrevPage(pages.prev ?? '');
     }
+    if (data?.products) {
+      setProducts((prev) => [...prev, ...data.products]);
+    }
   }, [
     pages,
     handleNextPage,
@@ -34,6 +36,7 @@ export function useProduct() {
     handleTotalPages,
     handleTotalResources,
   ]);
+
 
   return {
     products,
