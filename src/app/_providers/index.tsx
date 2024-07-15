@@ -1,3 +1,4 @@
+import { PaginationProvider } from './context';
 import { QueryProvider } from './query';
 import { SWRProvider } from './swr';
 
@@ -19,7 +20,9 @@ export const Providers: React.FC<Props> = ({ children }) => {
         <BottomSheetModalProvider>
           <ActionSheetProvider>
             <NavThemeProvider value={NAV_THEME[colorScheme]}>
-              <SWRProvider>{children}</SWRProvider>
+              <SWRProvider>
+                <PaginationProvider>{children}</PaginationProvider>
+              </SWRProvider>
             </NavThemeProvider>
           </ActionSheetProvider>
         </BottomSheetModalProvider>
