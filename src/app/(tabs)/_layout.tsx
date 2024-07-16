@@ -5,6 +5,7 @@ import { Pressable } from 'react-native';
 
 export default function TabLayout() {
   const { toggleColorScheme, isDarkColorScheme } = useColorScheme();
+  const color = isDarkColorScheme ? 'white' : 'black';
   return (
     <Tabs
       screenOptions={{
@@ -15,7 +16,8 @@ export default function TabLayout() {
         name='index'
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <Icon name='home' color={color} />,
+
+          tabBarIcon: () => <Icon name='home' color={color} />,
           ...BUTTONS_OPTIONS({ toggleColorScheme, isDarkColorScheme }),
         }}
       />
@@ -23,7 +25,7 @@ export default function TabLayout() {
         name='cart'
         options={{
           title: 'Cart',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: () => (
             <Icon name='shopping-cart' color={color} />
           ),
           ...BUTTONS_OPTIONS({ toggleColorScheme, isDarkColorScheme }),
@@ -45,19 +47,14 @@ const BUTTONS_OPTIONS = ({
     headerRight: () => {
       return (
         <Pressable onPress={toggleColorScheme}>
-          {isDarkColorScheme && (
-            <Icon name='sunny-snowing' size={24} color='yellow' />
-          )}
-          {!isDarkColorScheme && (
-            <Icon name='nightlight' size={24} color='#4B77D1' />
-          )}
+          <Icon name={isDarkColorScheme ? 'sunny-snowing' : 'nightlight'} size={24} color={isDarkColorScheme ? 'yellow' : '#4B77D1'} />
         </Pressable>
       );
     },
     headerLeft: () => {
       return (
         <Pressable onPress={() => console.log('pressed')}>
-          <Icon name='menu' size={24} color='black' />
+          <Icon name='menu' size={24} color={isDarkColorScheme ? 'white' : 'black'} />
         </Pressable>
       )  
     },
