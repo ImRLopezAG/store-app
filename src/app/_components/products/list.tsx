@@ -33,8 +33,6 @@ export const ProductList: React.FC<Props> = ({ product, title }) => {
         renderItem={({ item }) => <ProductCard product={item} />}
         refreshing={isLoading}
         onRefresh={handleRefresh}
-        onEndReached={() => handleCurrPage(nextPage)}
-        onEndReachedThreshold={0.4}
       />
     </Wrapper>
   );

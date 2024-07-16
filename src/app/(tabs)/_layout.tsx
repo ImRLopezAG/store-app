@@ -2,7 +2,6 @@ import { Icon } from '@ui/icons';
 import { useColorScheme } from '@hooks/use-color-scheme';
 import { Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
-import { SWRConfig } from 'swr';
 
 export default function TabLayout() {
   const { toggleColorScheme, isDarkColorScheme } = useColorScheme();
@@ -56,7 +55,11 @@ const BUTTONS_OPTIONS = ({
       );
     },
     headerLeft: () => {
-      return <Icon name='menu' size={24} color='black' />;
+      return (
+        <Pressable onPress={() => console.log('pressed')}>
+          <Icon name='menu' size={24} color='black' />
+        </Pressable>
+      )  
     },
   };
 };
