@@ -7,20 +7,20 @@ export const emptyCustomer: Customer = {
   zip: Math.floor(Math.random() * 100000).toString(),
   country: '',
   phone: '',
-  password: '',
-};
+  password: ''
+}
 export const emptyCard: Card = {
   number: '',
   cvc: '',
   month: '',
   year: '',
-  holder: 'Visa',
-};
+  holder: 'Visa'
+}
 export const emptyCart: Cart = {
   id: `INV-${Math.floor(Math.random() * 100000).toString()}`,
   payment: {
     customer: emptyCustomer,
-    card: emptyCard,
+    card: emptyCard
   },
   lines: [],
   totals: {
@@ -28,11 +28,11 @@ export const emptyCart: Cart = {
     subtotal: 0,
     totalVAT: 0,
     total: 0,
-    shipping: 0,
+    shipping: 0
   },
   createdAt: new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
-  }).format(new Date()),
-};
+    day: 'numeric'
+  }).format(new Date())
+}
