@@ -1,12 +1,12 @@
-import { cn } from '@shared/cn';
-import { Container } from '@ui/container';
-import { Stack } from 'expo-router';
-import { forwardRef } from 'react';
-import { StyleProp, View, ViewProps } from 'react-native';
+import { cn } from '@shared/cn'
+import { Container } from '@ui/container'
+import { Stack } from 'expo-router'
+import { forwardRef } from 'react'
+import { View, ViewProps } from 'react-native'
 interface WrapperProps {
-  children: React.ReactNode;
-  title: string;
-  className?: string;
+  children: React.ReactNode
+  title: string
+  className?: string
 }
 
 export const Wrapper: React.FC<WrapperProps & ViewProps> = forwardRef(
@@ -18,6 +18,6 @@ export const Wrapper: React.FC<WrapperProps & ViewProps> = forwardRef(
           {children}
         </View>
       </Container>
-    );
+    )
   }
-);
+)
