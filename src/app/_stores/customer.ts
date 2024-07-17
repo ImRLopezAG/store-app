@@ -1,4 +1,7 @@
-import { emptyCustomer } from '@services/cart';
-import { createStores } from './create-stores';
+import { emptyCustomer } from '@services/cart'
 
-export const useCustomerStore = createStores(['cart'], emptyCustomer, () => Promise.resolve(emptyCustomer));
+import { createStores } from './create-stores'
+
+export const useCustomerStore = createStores(['cart'], emptyCustomer, () =>
+  Promise.resolve(emptyCustomer)
+)

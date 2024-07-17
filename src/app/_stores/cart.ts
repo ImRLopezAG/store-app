@@ -1,4 +1,7 @@
-import { emptyCart } from '@services/cart';
-import { createStores } from './create-stores';
+import { emptyCart } from '@services/cart'
 
-export const useCartStore = createStores(['cart'], emptyCart, () => Promise.resolve(emptyCart));
+import { createStores } from './create-stores'
+
+export const useCartStore = createStores(['cart'], emptyCart, () =>
+  Promise.resolve(emptyCart)
+)

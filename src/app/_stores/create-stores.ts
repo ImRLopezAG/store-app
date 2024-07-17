@@ -1,11 +1,14 @@
-import { QueryClient, QueryKey, useQuery, useQueryClient } from "@tanstack/react-query";
+import { QueryKey, useQuery, useQueryClient } from '@tanstack/react-query'
 
-export function createStores<T>(queryKey: QueryKey,initialData: T | null = null, queryFn: () => Promise<T> | null ) {
-
+export function createStores<T>(
+  queryKey: QueryKey,
+  initialData: T | null = null,
+  queryFn: () => Promise<T> | null
+) {
   return function () {
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient()
 
-    const {data, error, isLoading } = useQuery({
+    const { data, error, isLoading } = useQuery({
       queryKey,
       queryFn,
       initialData,
@@ -13,7 +16,7 @@ export function createStores<T>(queryKey: QueryKey,initialData: T | null = null,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
-      refetchIntervalInBackground: false,
+      refetchIntervalInBackground: false
     })
 
     function setQueryData(newData: Partial<T>) {
@@ -23,10 +26,10 @@ export function createStores<T>(queryKey: QueryKey,initialData: T | null = null,
     }
     function refetch() {
       queryClient.invalidateQueries({
-        queryKey,
+        queryKey
       })
       queryClient.refetchQueries({
-        queryKey,
+        queryKey
       })
     }
 
@@ -35,7 +38,7 @@ export function createStores<T>(queryKey: QueryKey,initialData: T | null = null,
       error,
       isLoading,
       setQueryData,
-      refetch,
+      refetch
     }
   }
 }
