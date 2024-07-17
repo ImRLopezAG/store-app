@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.nike.com/cic/browse/v2';
+const BASE_URL = 'https://api.nike.com/cic/browse/v2'
 
 export const getProducts = async (search: string) => {
   const QUERY = `query products($endpoint: String!) {
@@ -40,19 +40,19 @@ export const getProducts = async (search: string) => {
           totalPages
       }
   }
-}`;
+}`
 
   const variables = {
-    endpoint: search,
-  };
+    endpoint: search
+  }
 
   const { products, pages } = await getQuery<{
-    products: Product[];
-    pages: Page;
-  }>(QUERY, variables);
+    products: Product[]
+    pages: Page
+  }>(QUERY, variables)
 
-  return { products, pages };
-};
+  return { products, pages }
+}
 
 export const getQuery = async <T>(
   query: string,
@@ -61,13 +61,13 @@ export const getQuery = async <T>(
   const response = await fetch(BASE_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       query,
-      variables,
-    }),
-  }).then((res) => res.json());
+      variables
+    })
+  }).then((res) => res.json())
 
-  return response.data.products as T;
-};
+  return response.data.products as T
+}
