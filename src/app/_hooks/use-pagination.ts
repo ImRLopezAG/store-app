@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-import { PaginationContext } from '@app/_providers/context';
+import { PaginationContext } from '@app/_providers/context'
+import { useContext } from 'react'
 
 export function usePage() {
-  const context = useContext(PaginationContext);
+  const context = useContext(PaginationContext)
 
   if (!context)
-    throw new Error('usePagination must be used within a PaginationProvider');
+    throw new Error('usePagination must be used within a PaginationProvider')
 
-  return context;
+  return context
 }
