@@ -1,15 +1,15 @@
+import { Providers } from '@app/_providers'
 import {
   useColorScheme,
-  useInitialAndroidBarSync,
-} from '@hooks/use-color-scheme';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { Providers } from '@app/_providers';
-import './global.css';
+  useInitialAndroidBarSync
+} from '@hooks/use-color-scheme'
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import './global.css'
 
 export default function Layout() {
-  useInitialAndroidBarSync();
-  const { isDarkColorScheme } = useColorScheme();
+  useInitialAndroidBarSync()
+  const { isDarkColorScheme } = useColorScheme()
   return (
     <>
       <StatusBar
@@ -21,17 +21,17 @@ export default function Layout() {
       <Providers>
         <Stack
           screenOptions={{
-            animation: 'ios',
+            animation: 'ios'
           }}
         >
           <Stack.Screen
-            name='(tabs)'
+            name='(drawer)'
             options={{
-              headerShown: false,
+              headerShown: false
             }}
           />
         </Stack>
       </Providers>
     </>
-  );
+  )
 }
