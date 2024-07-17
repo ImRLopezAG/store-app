@@ -1,12 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { experimental_createPersister } from '@tanstack/query-persist-client-core'
 import {
   defaultShouldDehydrateQuery,
   QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
-import { useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { experimental_createPersister } from '@tanstack/query-persist-client-core'
-
+  QueryClientProvider
+} from '@tanstack/react-query'
+import { useState } from 'react'
 
 const createQueryClient = () => {
   return new QueryClient({
@@ -17,31 +16,30 @@ const createQueryClient = () => {
         staleTime: 1000 * 60 * 5,
         persister: experimental_createPersister({
           storage: AsyncStorage,
-          maxAge: 1000 * 60 * 60 * 12, // 12 hours
+          maxAge: 1000 * 60 * 60 * 12 // 12 hours
         })
       },
       dehydrate: {
         shouldDehydrateQuery: (query) =>
-          defaultShouldDehydrateQuery(query) ||
-          query.state.status === 'pending',
-      },
-    },
-  });
-};
+          defaultShouldDehydrateQuery(query) || query.state.status === 'pending'
+      }
+    }
+  })
+}
 
-let clientQueryClientSingleton: QueryClient | undefined = undefined;
+let clientQueryClientSingleton: QueryClient | undefined = undefined
 const getQueryClient = () => {
   if (typeof window === 'undefined') {
     // Server: always make a new query client
-    return createQueryClient();
+    return createQueryClient()
   }
   // Browser: use singleton pattern to keep the same query client
-  return (clientQueryClientSingleton ??= createQueryClient());
-};
+  return (clientQueryClientSingleton ??= createQueryClient())
+}
 
 export const QueryProvider: React.FC<Props> = ({ children }) => {
-  const [queryClient] = useState(getQueryClient);
+  const [queryClient] = useState(getQueryClient)
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  );
-};
+  )
+}

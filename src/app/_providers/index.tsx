@@ -1,18 +1,16 @@
-import { PaginationProvider } from './context';
-import { QueryProvider } from './query';
-import { SWRProvider } from './swr';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet'
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import { useColorScheme } from '@hooks/use-color-scheme'
+import { ThemeProvider as NavThemeProvider } from '@react-navigation/native'
+import { NAV_THEME } from '@shared/theme'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-import { ThemeProvider as NavThemeProvider } from '@react-navigation/native';
-import { NAV_THEME } from '@shared/theme';
-
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { useColorScheme } from '@hooks/use-color-scheme';
+import { PaginationProvider } from './context'
+import { QueryProvider } from './query'
+import { SWRProvider } from './swr'
 
 export const Providers: React.FC<Props> = ({ children }) => {
-  const { colorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme()
 
   return (
     <QueryProvider>
@@ -28,5 +26,5 @@ export const Providers: React.FC<Props> = ({ children }) => {
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </QueryProvider>
-  );
-};
+  )
+}
