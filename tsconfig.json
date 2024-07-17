@@ -4,33 +4,15 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "@components/*": [
-        "src/app/_components/*"
-      ],
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@hooks/*": [
-        "src/app/_hooks/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@ui/*": [
-        "src/app/_components/ui/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@stores/*": [
-        "src/app/_stores/*"
-      ],
+      "~/*": ["./src/*"],
+      "@components/*": ["src/app/_components/*"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"],
+      "@hooks/*": ["src/app/_hooks/*"],
+      "@shared/*": ["src/shared/*"],
+      "@ui/*": ["src/app/_components/ui/*"],
+      "@services/*": ["src/services/*"],
+      "@stores/*": ["src/app/_stores/*"]
     }
   },
   "include": [
