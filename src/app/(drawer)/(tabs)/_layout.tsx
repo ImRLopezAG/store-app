@@ -6,12 +6,7 @@ export default function TabLayout() {
   const { handleColor } = useColorScheme()
   const color = handleColor('white', 'black')
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: 'black',
-        headerShown: false
-      }}
-    >
+    <Tabs screenOptions={{ headerShown: false }}>
       <Tabs.Screen
         name='index'
         options={{
