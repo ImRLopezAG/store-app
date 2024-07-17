@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const CustomerSchema = z.object({
   name: z.string(),
@@ -9,5 +9,5 @@ export const CustomerSchema = z.object({
   zip: z.string(),
   country: z.string(),
   phone: z.string(),
-  password: z.string().nullable(),
-});
+  password: z.string().nullable()
+})
