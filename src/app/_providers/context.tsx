@@ -16,6 +16,7 @@ export interface ContextStore {
   totalPages: number
   totalResources: number
   endpoints: typeof endpoints
+  product: 'NEW_RELEASES' | 'WOMEN' | 'MEN'
 }
 
 type ContextProps = ContextStore & {
@@ -25,6 +26,8 @@ type ContextProps = ContextStore & {
   handleTotalResources: (totalResources: number) => void
   handleCurrPage: (currPage: string) => void
   getBase: (attribute: TemplateStringsArray) => string
+  getTitle: () => string
+  setTitles: (title: string) => void
 }
 
 export const PaginationContext = createContext<ContextProps | null>(null)
@@ -36,7 +39,8 @@ export const PaginationProvider: React.FC<Props> = ({ children }) => {
     prevPage: '',
     totalPages: 0,
     totalResources: 0,
-    endpoints
+    endpoints,
+    product: 'NEW_RELEASES'
   })
 
   const handleNextPage = useCallback((nextPage: string) => {
@@ -59,6 +63,18 @@ export const PaginationProvider: React.FC<Props> = ({ children }) => {
     setPagination((prev) => ({ ...prev, currPage }))
   }, [])
 
+  const getTitle = useCallback(() => {
+    const title = {
+      NEW_RELEASES: 'New Releases',
+      MEN: 'Wen',
+      WOMEN: 'Women'
+    }
+    return title[pagination.product]
+  }, [pagination.product])
+
+  const setTitles = useCallback((title: string) => {
+    setPagination((prev) => ({ ...prev, product: title as 'NEW_RELEASES' | 'WOMEN' | 'MEN' }))
+  }, [])
   const value = {
     ...pagination,
     handleNextPage,
@@ -66,7 +82,9 @@ export const PaginationProvider: React.FC<Props> = ({ children }) => {
     handleTotalPages,
     handleTotalResources,
     handleCurrPage,
-    getBase
+    getBase,
+    getTitle,
+    setTitles
   }
 
   return (
