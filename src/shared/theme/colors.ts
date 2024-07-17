@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
 const IOS_SYSTEM_COLORS = {
   white: 'rgb(255, 255, 255)',
@@ -15,7 +15,7 @@ const IOS_SYSTEM_COLORS = {
     root: 'rgb(255, 255, 255)',
     card: 'rgb(255, 255, 255)',
     destructive: 'rgb(255, 56, 43)',
-    primary: 'rgb(0, 123, 254)',
+    primary: 'rgb(0, 123, 254)'
   },
   dark: {
     grey6: 'rgb(21, 21, 24)',
@@ -29,9 +29,9 @@ const IOS_SYSTEM_COLORS = {
     root: 'rgb(0, 0, 0)',
     card: 'rgb(28, 28, 30)',
     destructive: 'rgb(254, 67, 54)',
-    primary: 'rgb(3, 133, 255)',
-  },
-} as const;
+    primary: 'rgb(3, 133, 255)'
+  }
+} as const
 
 const ANDROID_COLORS = {
   white: 'rgb(255, 255, 255)',
@@ -48,7 +48,7 @@ const ANDROID_COLORS = {
     root: 'rgb(255, 255, 255)',
     card: 'rgb(255, 255, 255)',
     destructive: 'rgb(186, 26, 26)',
-    primary: 'rgb(0, 112, 233)',
+    primary: 'rgb(0, 112, 233)'
   },
   dark: {
     grey6: 'rgb(16, 19, 27)',
@@ -62,10 +62,10 @@ const ANDROID_COLORS = {
     root: 'rgb(0, 0, 0)',
     card: 'rgb(16, 19, 27)',
     destructive: 'rgb(147, 0, 10)',
-    primary: 'rgb(3, 133, 255)',
-  },
-} as const;
+    primary: 'rgb(3, 133, 255)'
+  }
+} as const
 
-const COLORS = Platform.OS === 'ios' ? IOS_SYSTEM_COLORS : ANDROID_COLORS;
+const COLORS = Platform.OS === 'ios' ? IOS_SYSTEM_COLORS : ANDROID_COLORS
 
-export { COLORS };
+export { COLORS }
